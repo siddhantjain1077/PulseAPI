@@ -115,8 +115,8 @@ function EndpointDetails() {
                   endpoint.status === "UP"
                     ? "status-up"
                     : endpoint.status === "DOWN"
-                    ? "status-down"
-                    : "status-unknown"
+                      ? "status-down"
+                      : "status-unknown"
                 }
               >
                 {endpoint.status}
@@ -167,14 +167,17 @@ function EndpointDetails() {
             <div className="chart-box">
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={chartData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="time" />
-                  <YAxis />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                  <XAxis dataKey="time" stroke="#6b7280" />
+                  <YAxis stroke="#6b7280" />
                   <Tooltip />
                   <Line
                     type="monotone"
                     dataKey="responseTime"
+                    stroke="#2563eb"
                     strokeWidth={3}
+                    dot={{ fill: "#2563eb", strokeWidth: 2, r: 4 }}
+                    activeDot={{ r: 7, fill: "#1d4ed8" }}
                   />
                 </LineChart>
               </ResponsiveContainer>

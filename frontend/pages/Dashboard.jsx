@@ -71,9 +71,9 @@ function Dashboard() {
   ).length;
 
   const chartData = [
-    { name: "UP", value: upApis },
-    { name: "DOWN", value: downApis },
-    { name: "UNKNOWN", value: unknownApis },
+    { name: "UP", value: upApis, color: "#16a34a" },
+    { name: "DOWN", value: downApis, color: "#dc2626" },
+    { name: "UNKNOWN", value: unknownApis, color: "#f59e0b" },
   ];
 
   const categories = useMemo(() => {
@@ -188,7 +188,7 @@ function Dashboard() {
                   label
                 >
                   {chartData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} />
+                    <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
                 </Pie>
 
@@ -199,46 +199,78 @@ function Dashboard() {
         </div>
 
         <div className="filter-card">
-          <input
-            type="text"
-            placeholder="Search by API name, URL, or category"
-            value={searchText}
-            onChange={(event) => setSearchText(event.target.value)}
-          />
+          <div className="filter-header">
+            <div>
+              <h3>Filter APIs</h3>
+              <p>Search, filter, and sort your monitored endpoints.</p>
+            </div>
 
-          <select
-            value={statusFilter}
-            onChange={(event) => setStatusFilter(event.target.value)}
-          >
-            <option value="ALL">All Status</option>
-            <option value="UP">UP</option>
-            <option value="DOWN">DOWN</option>
-            <option value="UNKNOWN">UNKNOWN</option>
-          </select>
+            <button
+              className="clear-filter-btn"
+              onClick={() => {
+                setSearchText("");
+                setStatusFilter("ALL");
+                setCategoryFilter("ALL");
+                setSortBy("NEWEST");
+              }}
+            >
+              Clear Filters
+            </button>
+          </div>
 
-          <select
-            value={categoryFilter}
-            onChange={(event) => setCategoryFilter(event.target.value)}
-          >
-            {categories.map((category) => (
-              <option value={category} key={category}>
-                {category === "ALL" ? "All Categories" : category}
-              </option>
-            ))}
-          </select>
+          <div className="filter-grid">
+            <div className="filter-field search-field">
+              <label>Search</label>
+              <input
+                type="text"
+                placeholder="Search API name, URL, or category..."
+                value={searchText}
+                onChange={(event) => setSearchText(event.target.value)}
+              />
+            </div>
 
-          <select
-            value={sortBy}
-            onChange={(event) => setSortBy(event.target.value)}
-          >
-            <option value="NEWEST">Newest First</option>
-            <option value="RESPONSE_TIME_LOW">Response Time: Low to High</option>
-            <option value="RESPONSE_TIME_HIGH">Response Time: High to Low</option>
-            <option value="UPTIME_HIGH">Uptime: High to Low</option>
-            <option value="UPTIME_LOW">Uptime: Low to High</option>
-          </select>
+            <div className="filter-field">
+              <label>Status</label>
+              <select
+                value={statusFilter}
+                onChange={(event) => setStatusFilter(event.target.value)}
+              >
+                <option value="ALL">All Status</option>
+                <option value="UP">UP</option>
+                <option value="DOWN">DOWN</option>
+                <option value="UNKNOWN">UNKNOWN</option>
+              </select>
+            </div>
+
+            <div className="filter-field">
+              <label>Category</label>
+              <select
+                value={categoryFilter}
+                onChange={(event) => setCategoryFilter(event.target.value)}
+              >
+                {categories.map((category) => (
+                  <option value={category} key={category}>
+                    {category === "ALL" ? "All Categories" : category}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="filter-field">
+              <label>Sort By</label>
+              <select
+                value={sortBy}
+                onChange={(event) => setSortBy(event.target.value)}
+              >
+                <option value="NEWEST">Newest First</option>
+                <option value="RESPONSE_TIME_LOW">Response Time: Low to High</option>
+                <option value="RESPONSE_TIME_HIGH">Response Time: High to Low</option>
+                <option value="UPTIME_HIGH">Uptime: High to Low</option>
+                <option value="UPTIME_LOW">Uptime: Low to High</option>
+              </select>
+            </div>
+          </div>
         </div>
-
         <h2 className="section-title">Monitored Endpoints</h2>
 
         {loading ? (
