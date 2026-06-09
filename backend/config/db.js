@@ -30,18 +30,12 @@ console.log("DB_NAME:", dbConfig.database);
 
 const db = mysql.createPool({
   ...dbConfig,
-
   waitForConnections: true,
   connectionLimit: 3,
   queueLimit: 0,
-
   connectTimeout: 30000,
   enableKeepAlive: true,
   keepAliveInitialDelay: 0,
-
-  ssl: {
-    rejectUnauthorized: false,
-  },
 });
 
 db.getConnection((error, connection) => {
