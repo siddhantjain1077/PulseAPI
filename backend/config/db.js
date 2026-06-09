@@ -9,8 +9,8 @@ if (process.env.DATABASE_URL) {
   dbConfig = {
     host: dbUrl.hostname,
     port: Number(dbUrl.port),
-    user: dbUrl.username,
-    password: dbUrl.password,
+    user: decodeURIComponent(dbUrl.username),
+    password: decodeURIComponent(dbUrl.password),
     database: dbUrl.pathname.replace("/", ""),
   };
 } else {
@@ -32,12 +32,16 @@ const db = mysql.createPool({
   ...dbConfig,
 
   waitForConnections: true,
-  connectionLimit: 5,
+  connectionLimit: 3,
   queueLimit: 0,
 
   connectTimeout: 30000,
   enableKeepAlive: true,
   keepAliveInitialDelay: 0,
+
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 db.getConnection((error, connection) => {

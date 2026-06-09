@@ -1,6 +1,6 @@
 const db = require("./db");
 
-const initDatabase = () => {
+const initDatabase = async () => {
   const queries = [
     `CREATE TABLE IF NOT EXISTS users (
       id INT AUTO_INCREMENT PRIMARY KEY,
@@ -49,15 +49,19 @@ const initDatabase = () => {
     )`,
   ];
 
-  queries.forEach((query) => {
-    db.query(query, (error) => {
-      if (error) {
-        console.log("Table creation failed:", error.message);
-      } else {
-        console.log("Table checked/created successfully");
-      }
+  for (const query of queries) {
+    await new Promise((resolve) => {
+      db.query(query, (error) => {
+        if (error) {
+          console.log("Table creation failed:", error.message);
+        } else {
+          console.log("Table checked/created successfully");
+        }
+
+        resolve();
+      });
     });
-  });
+  }
 };
 
 module.exports = initDatabase;
