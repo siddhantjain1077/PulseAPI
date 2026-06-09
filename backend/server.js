@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 });
 
 initDatabase();
-//startApiChecker();
+startApiChecker();
 
 const PORT = process.env.PORT || 5000;
 
