@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const initDatabase = require("./config/initDb");
 require("dotenv").config();
 
 const authRoutes = require("./routes/authrRoutes");
@@ -17,6 +18,7 @@ app.get("/", (req, res) => {
   res.send("PulseAPI Backend is running");
 });
 
+initDatabase();
 startApiChecker();
 
 const PORT = process.env.PORT || 5000;
