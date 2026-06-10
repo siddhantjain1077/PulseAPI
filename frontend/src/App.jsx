@@ -1,13 +1,13 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Dashboard from "./pages/Dashboard";
-import AddEndpoint from "./pages/AddEndpoint";
-import BulkImport from "./pages/BulkImport";
-import Incidents from "./pages/Incidents";
-import PublicStatus from "./pages/PublicStatus";
-import EndpointDetails from "./pages/EndpointDetails";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import Dashboard from "../pages/Dashboard";
+import AddEndpoint from "../pages/AddEndpoint";
+import BulkImport from "../pages/BulkImport";
+import Incidents from "../pages/Incidents";
+import PublicStatus from "../pages/PublicStatus";
+import EndpointDetails from "../pages/EndpointDetails";
 
 function ProtectedRoute({ children }) {
   const token = localStorage.getItem("token");
