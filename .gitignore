@@ -16,6 +16,8 @@ frontend/.env.production
 
 databaseenv.env
 *.env
+.env*
+frontend/.env.prodcution
 
 *.log
 npm-debug.log*
