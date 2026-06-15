@@ -644,15 +644,7 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md) for more information.
 * GitHub: [@siddhantjain1077](https://github.com/siddhantjain1077)
 * Project: [PulseAPI](https://github.com/siddhantjain1077/PulseAPI)
 
----
 
-## License
-
-This project is licensed under the MIT License.
-
-See the [LICENSE](LICENSE) file for details.
-
----
 
 <p align="center">
   Built with React, Node.js, Express, MySQL, Railway and Vercel.
