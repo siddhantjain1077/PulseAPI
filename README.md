@@ -15,9 +15,9 @@
   <a href="https://pulseapi-production-181e.up.railway.app/api/health">
     <img src="https://img.shields.io/badge/Backend-Railway-purple?style=for-the-badge&logo=railway" alt="Backend" />
   </a>
-  <a href="LICENSE">
+  <!-- <a href="LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License" />
-  </a>
+  </a> -->
 </p>
 
 ---
