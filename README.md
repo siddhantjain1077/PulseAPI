@@ -15,9 +15,9 @@
   <a href="https://pulseapi-production-181e.up.railway.app/api/health">
     <img src="https://img.shields.io/badge/Backend-Railway-purple?style=for-the-badge&logo=railway" alt="Backend" />
   </a>
-  <a href="LICENSE">
+  <!-- <a href="LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License" />
-  </a>
+  </a> -->
 </p>
 
 ---
@@ -644,15 +644,7 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md) for more information.
 * GitHub: [@siddhantjain1077](https://github.com/siddhantjain1077)
 * Project: [PulseAPI](https://github.com/siddhantjain1077/PulseAPI)
 
----
 
-## License
-
-This project is licensed under the MIT License.
-
-See the [LICENSE](LICENSE) file for details.
-
----
 
 <p align="center">
   Built with React, Node.js, Express, MySQL, Railway and Vercel.
