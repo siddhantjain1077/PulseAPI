@@ -28,8 +28,14 @@ function Register() {
 
       setMessage(response.data.message);
 
+      // Store token and user data in localStorage
+      if (response.data.token) {
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+      }
+
       setTimeout(() => {
-        navigate("/login");
+        navigate("/dashboard");
       }, 1500);
     } catch (error) {
       setMessage(error.response?.data?.message || "Registration failed");

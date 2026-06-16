@@ -24,8 +24,25 @@ exports.registerUser = async (req, res) => {
         });
       }
 
+      const token = jwt.sign(
+        {
+          id: result.insertId,
+          email: email,
+        },
+        process.env.JWT_SECRET,
+        {
+          expiresIn: "1d",
+        }
+      );
+
       res.status(201).json({
         message: "User registered successfully",
+        token,
+        user: {
+          id: result.insertId,
+          name: name,
+          email: email,
+        },
       });
     });
   } catch (error) {
